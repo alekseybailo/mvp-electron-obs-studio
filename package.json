@@ -1,0 +1,18 @@
+{
+  "name": "mvp-obs-call",
+  "version": "1.0.0",
+  "description": "Node.js Addon OBS Calling",
+  "main": "main.js",
+  "private": true,
+  "dependencies": {
+    "bindings": "~1.5.0"
+  },
+  "scripts": {
+    "test": "node main.js",
+    "start": "electron ./"
+  },
+  "gypfile": true,
+  "devDependencies": {
+    "electron": "^33.2.1"
+  }
+}
