@@ -3,7 +3,8 @@
 #include "3rdparty/src/libobs/obs.h"
 
 
-//API: check if OBS initialized
+//OBS API marshaling
+
 static napi_value ObsInitialized(napi_env env, napi_callback_info info) {
 
     napi_value result;
@@ -18,7 +19,6 @@ static napi_value ObsInitialized(napi_env env, napi_callback_info info) {
     return result;
 }
 
-//API: initialize OBS
 static napi_value ObsStartup(napi_env env, napi_callback_info info) {
 
     napi_value result;
@@ -89,6 +89,85 @@ static napi_value ObsShutdown(napi_env env, napi_callback_info info) {
     return NULL;
 }
 
+static napi_value ObsResetVideo(napi_env env, napi_callback_info info)
+{
+  return NULL;
+}
+
+static napi_value ObsResetAudio(napi_env env, napi_callback_info info)
+{
+  return NULL;
+}
+
+static napi_value ObsLoadAllModules(napi_env env, napi_callback_info info)
+{
+  return NULL;
+}
+
+static napi_value ObsOutputCreate(napi_env env, napi_callback_info info)
+{
+  return NULL;
+}
+
+static napi_value ObsOutputRelease(napi_env env, napi_callback_info info)
+{
+  return NULL;
+}
+
+static napi_value ObsOutputSetVideoEncoder(napi_env env, napi_callback_info info)
+{
+  return NULL;
+}
+
+static napi_value ObsOutputSetAudioEncoder(napi_env env, napi_callback_info info)
+{
+  return NULL;
+}
+
+static napi_value ObsOutputSetService(napi_env env, napi_callback_info info)
+{
+  return NULL;
+}
+
+static napi_value ObsOutputStart(napi_env env, napi_callback_info info)
+{
+  return NULL;
+}
+
+static napi_value ObsOutputStop(napi_env env, napi_callback_info info)
+{
+  return NULL;
+}
+
+static napi_value ObsVideoEncoderCreate(napi_env env, napi_callback_info info)
+{
+  return NULL;
+}
+
+static napi_value ObsAudioEncoderCreate(napi_env env, napi_callback_info info)
+{
+  return NULL;
+}
+
+static napi_value ObsEncoderRelease(napi_env env, napi_callback_info info)
+{
+  return NULL;
+}
+
+static napi_value ObsServiceCreate(napi_env env, napi_callback_info info)
+{
+  return NULL;
+}
+
+static napi_value ObsServiceRelease(napi_env env, napi_callback_info info)
+{
+  return NULL;
+}
+
+
+// -----------------------------------------------------------------------------
+// Declare all exports for NodeJs
+
 #define DECLARE_NAPI_METHOD(name, func)                                        \
   { name, 0, func, 0, 0, 0, napi_default, 0 }
 
@@ -98,9 +177,28 @@ static napi_value Init(napi_env env, napi_value exports) {
     DECLARE_NAPI_METHOD("ObsInitialized", ObsInitialized),
     DECLARE_NAPI_METHOD("ObsStartup", ObsStartup),
     DECLARE_NAPI_METHOD("ObsShutdown", ObsShutdown),
+
+    DECLARE_NAPI_METHOD("ObsResetVideo", ObsResetVideo),
+    DECLARE_NAPI_METHOD("ObsResetAudio", ObsResetAudio),
+    DECLARE_NAPI_METHOD("ObsLoadAllModules", ObsLoadAllModules),
+
+    DECLARE_NAPI_METHOD("ObsOutputCreate", ObsOutputCreate),
+    DECLARE_NAPI_METHOD("ObsOutputRelease", ObsOutputRelease),
+    DECLARE_NAPI_METHOD("ObsOutputStart", ObsOutputStart),
+    DECLARE_NAPI_METHOD("ObsOutputStop", ObsOutputStop),
+    DECLARE_NAPI_METHOD("ObsOutputSetVideoEncoder", ObsOutputSetVideoEncoder),
+    DECLARE_NAPI_METHOD("ObsOutputSetAudioEncoder", ObsOutputSetAudioEncoder),
+    DECLARE_NAPI_METHOD("ObsOutputSetService", ObsOutputSetService),
+
+    DECLARE_NAPI_METHOD("ObsVideoEncoderCreate", ObsVideoEncoderCreate),
+    DECLARE_NAPI_METHOD("ObsAudioEncoderCreate", ObsAudioEncoderCreate),
+    DECLARE_NAPI_METHOD("ObsEncoderRelease", ObsEncoderRelease),
+
+    DECLARE_NAPI_METHOD("ObsServiceCreate", ObsServiceCreate),
+    DECLARE_NAPI_METHOD("ObsServiceRelease", ObsServiceRelease)
   };
 
-  status = napi_define_properties(env, exports, 3, desc);
+  status = napi_define_properties(env, exports, 18, desc);
   assert(status == napi_ok);
 
   return exports;
